@@ -7,7 +7,20 @@ var Canvas = Class.extend({
 
 	 	this.ctx = (function(ctx){
 	 		ctx.width = ctx.canvas.width;
-	 		ctx.height = ctx.canvas.height;	 		
+	 		ctx.height = ctx.canvas.height;	 
+
+
+	 		ctx.drawPolygon = function(p,x,y){
+	 			p =p.point;
+
+	 			this.beginPath();
+	 			this.moveTo(p[0] + x, p[1] + y);
+	 			for(var i =2;i< p.length;i+=2){
+	 				this.lineTo(p[i]+ x, p[i+1] + y );
+	 			}
+	 			this.stroke();
+	 		};
+
 	 		return ctx;
 
 	 	})(this.canvas.getContext("2d"));

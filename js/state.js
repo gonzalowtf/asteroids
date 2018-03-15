@@ -1,9 +1,9 @@
-var State  = Class.extend({
+var State = Class.extend({
 
 
 		init: function(game){
 			this.game = game;
-		}
+		},
 
 		handleInputs: function() {},
 		update: function() {},
