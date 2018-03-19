@@ -11,7 +11,7 @@ var Canvas = Class.extend({
 
 
 	 		ctx.drawPolygon = function(p,x,y){
-	 			p =p.point;
+	 			p =p.points;
 
 	 			this.beginPath();
 	 			this.moveTo(p[0] + x, p[1] + y);
@@ -20,6 +20,10 @@ var Canvas = Class.extend({
 	 			}
 	 			this.stroke();
 	 		};
+
+	 		ctx.clearAll= function(){
+	 			this.clearRect(0,0,this.width,this.height);
+	 		}
 
 	 		return ctx;
 
