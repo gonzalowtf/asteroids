@@ -11,6 +11,14 @@ var Game = Class.extend({
 	init: function(){
 		this.canvas = new Canvas(640,480);
 
+		this.input = new InputHandler({
+			left: 37,
+			up: 38,
+			down:40,
+			right: 39,
+			spacebar: 32
+		});
+
 		this.canvas.ctx.strokeStyle = "#fff";
 
 
@@ -35,7 +43,7 @@ var Game = Class.extend({
 				self.nextState = State.NO_CHANGE;
 			}
 
-			self.currentState.handleInputs();
+			self.currentState.handleInputs(self.input);
 			self.currentState.update();
 			self.currentState.render(self.canvas.ctx);
 			
