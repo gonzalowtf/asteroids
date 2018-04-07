@@ -37,9 +37,15 @@ var GameState = State.extend({
 		}
 	},
 	handleInputs: function(input){
-		if(input.isDown("spacebar")){
-			console.log("test");
+		if(input.isDown("right")){
+			this.ship.rotate(0.06);
 		}
+		if(input.isDown("left")){
+			this.ship.rotate(-0.06);
+		}
+		if(input.isDown("up")){
+			this.ship.addVel();
+					}
 	},
 	update: function(){
 		
