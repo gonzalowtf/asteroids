@@ -7,10 +7,10 @@ var Bullet = Class.extend({
 		this.y = y;
 		this.shallRemove = false;
 	
-	this.vel = {
-		x: 5*Math.cos(angle);
-		y: 5*Math.sin(angle);
-	},
+		this.vel = {
+			x: 5*Math.cos(angle),
+			y: 5*Math.sin(angle)
+		}	
 	},
 	update : function(){
 		this.prevx = this.x;
