@@ -21,7 +21,7 @@ var GameState = State.extend({
 		this.ship = new Ship(Points.SHIP, Points.FLAMES,2,this.canvasWidth/2,this.canvasHeight/2);
 		this.ship.maxX = this.canvasWidth;
 		this.ship.maxY = this.canvasHeight;
-
+		this.lvl = 0;
 		this.generateLvl();
 		
 	},
