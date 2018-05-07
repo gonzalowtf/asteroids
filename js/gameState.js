@@ -32,7 +32,16 @@ var GameState = State.extend({
 		this.asteroids = [];
 		for(var i =0; i<num;i++){
 			var n = Math.round(Math.random()* (Points.ASTEROIDS.length - 1));
-			var astr= new Asteroid(Points.ASTEROIDS[n],AsteroidSize,100,100);
+
+			var x =0, y =0;
+
+			if(Math.random() > 0.5){
+				x = Math.random() * this.canvasWidth;
+			}else{
+				y = Math.random() * this.canvasHeight;
+			}
+
+			var astr= new Asteroid(Points.ASTEROIDS[n],AsteroidSize,x,y);
 			astr.maxX = this.canvasWidth;
 			astr.maxY = this.canvasHeight;
 
@@ -66,6 +75,21 @@ var GameState = State.extend({
 					this.bullets.splice(j,1);
 					len2--;
 					j--;
+
+
+					if(a.size > AsteroidSize/4){
+						for(var k =0; k< 2;k++){
+							var n = Math.round(Math.random()* (Points.ASTEROIDS.length - 1));
+							var astr= new Asteroid(Points.ASTEROIDS[n],a.size/2,a.x,a.y);
+							astr.maxX = this.canvasWidth;
+							astr.maxY = this.canvasHeight;
+							this.asteroids.push(astr);
+							len++;
+						}				
+					}
+					this.asteroids.splice(i,1);
+					len--;
+					i--;
 				}
 			}
 

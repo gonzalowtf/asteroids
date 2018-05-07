@@ -20,7 +20,7 @@ var Polygon = Class.extend({
 		}
 
 	},
-		hasPoint : function(p, ox, oy, x, y) {
+		hasPoint : function(ox, oy, x, y) {
 		var c = false;
 		var p = this.points;
 		var len = p.length;
