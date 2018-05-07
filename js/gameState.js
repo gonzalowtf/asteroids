@@ -18,7 +18,7 @@ var GameState = State.extend({
 		this.canvasWidth = game.canvas.ctx.width;
 		this.canvasHeight = game.canvas.ctx.height;
 
-		this.ship = new Ship(Points.SHIP, Points.FLAMES,2,this.canvasWidth/2,this.canvasHeight/2);
+		this.ship = new Ship(Points.SHIP, Points.FLAMES,2,0,0);
 		this.ship.maxX = this.canvasWidth;
 		this.ship.maxY = this.canvasHeight;
 		this.lvl = 0;
@@ -26,7 +26,10 @@ var GameState = State.extend({
 		
 	},
 	generateLvl: function(){
-		var num = 3;
+		var num = Math.round((this.lvl + 5)/10);
+
+		this.ship.x = this.canvasWidth/2;
+		this.ship.y = this.canvasHeight/2;
 
 		this.bullets = [];
 		this.asteroids = [];
@@ -105,6 +108,11 @@ var GameState = State.extend({
 			}
 		}
 		this.ship.update();
+
+		if(this.asteroids.length ===0){
+			this.lvl++;
+			this.generateLvl();
+		}
 	},
 	render: function(ctx){
 		ctx.clearAll();		
